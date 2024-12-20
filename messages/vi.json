@@ -1,0 +1,28 @@
+{
+    "common": {
+        "hello": "Xin chào",
+        "something-missing": "Có gì đó không đúng",
+        "sorry": "Xin lỗi, trang bạn đang tìm không tồn tại hoặc đã được chuyển đi.",
+        "back-home": "Trở về trang chủ",
+        "go-back": "Quay lại",
+        "toggle-theme": "Chuyển đổi chủ đề",
+        "light": "Sáng",
+        "dark": "Tối",
+        "system": "Hệ thống"
+    },
+    "title": {
+        "login": "Đăng nhập",
+        "register": "Đăng ký",
+        "login-into-account": "Đăng nhập vào tài khoản của bạn",
+        "register-account": "Đăng ký tài khoản",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "forgot-password": "Quên mật khẩu?",
+        "or-continue-with": "Hoặc tiếp tục với",
+        "login-with": "Đăng nhập với",
+        "do-not-have-account": "Chưa có tài khoản?"
+    },
+    "label": {
+        "enter-email": "Nhập email của bạn bên dưới để đăng nhập vào tài khoản của bạn"
+    }
+}

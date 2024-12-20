@@ -1,0 +1,28 @@
+{
+    "common": {
+        "hello": "Hello",
+        "something-missing": "Something is missing",
+        "sorry": "Sorry, the page you are looking for doesn't exist or has been moved.",
+        "back-home": "Back to home",
+        "go-back": "Go back",
+        "toggle-theme": "Toggle theme",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+    },
+    "title": {
+        "login": "Login",
+        "register": "Register",
+        "login-into-account": "Login into your account",
+        "register-account": "Register an account",
+        "email": "Email",
+        "password": "Password",
+        "forgot-password": " Forgot your password?",
+        "or-continue-with": "Or continue with",
+        "login-with": "Login with",
+        "do-not-have-account": "Don't have an account?"
+    },
+    "label": {
+        "enter-email": "Enter your email below to login to your account"
+    }
+}
