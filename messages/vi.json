@@ -8,7 +8,12 @@
         "toggle-theme": "Chuyển đổi chủ đề",
         "light": "Sáng",
         "dark": "Tối",
-        "system": "Hệ thống"
+        "system": "Hệ thống",
+        "dashboard": "Thống kê",
+        "accounts": "Quản lý tài khoản",
+        "products": "Quản lý sản phẩm",
+        "categories": "Quản lý danh mục",
+        "settings": "Thiết đặt"
     },
     "title": {
         "login": "Đăng nhập",

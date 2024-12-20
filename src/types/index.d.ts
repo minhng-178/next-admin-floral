@@ -5,3 +5,7 @@ declare module "form-types" {
 declare module "env" {
   export * from "@/types/env";
 }
+
+declare module "menu-types" {
+  export * from "@/types/menu";
+}

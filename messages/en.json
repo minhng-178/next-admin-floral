@@ -8,7 +8,12 @@
         "toggle-theme": "Toggle theme",
         "light": "Light",
         "dark": "Dark",
-        "system": "System"
+        "system": "System",
+        "dashboard": "Dashboard",
+        "accounts": "Accounts",
+        "products": "Products",
+        "categories": "Categories",
+        "settings": "Settings"
     },
     "title": {
         "login": "Login",

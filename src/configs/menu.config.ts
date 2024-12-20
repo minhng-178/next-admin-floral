@@ -1,0 +1,5 @@
+export type SELECTED_MENU_KEY_TYPE =
+  | "DASHBOARD"
+  | "PROJECTS"
+  | "MESSAGES"
+  | "CALENDAR";

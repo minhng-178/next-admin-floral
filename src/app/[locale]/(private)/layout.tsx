@@ -1,4 +1,5 @@
-import Navbar from "@/components/layout/navbar";
+import { AppSidebar, Navbar } from "@/components/layout";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import React from "react";
 
 export default function PrivateLayout({
@@ -7,9 +8,14 @@ export default function PrivateLayout({
   children: React.ReactNode;
 }): React.ReactElement {
   return (
-    <div className="h-full">
-      <Navbar />
-      {children}
-    </div>
+    <>
+      <SidebarProvider>
+        <AppSidebar variant="sidebar" />
+        <SidebarInset>
+          <Navbar />
+          {children}
+        </SidebarInset>
+      </SidebarProvider>
+    </>
   );
 }

@@ -4,19 +4,20 @@ import React from "react";
 
 interface AppIconProps {
   className?: string;
+  state?: "expanded" | "collapsed";
 }
 
 const AppIcon: React.FC<AppIconProps> = (props) => {
-  const { className } = props;
+  const { className, state } = props;
   return (
     <Link
-      href="/"
-      className={`flex items-center gap-2 font-medium ${className}`}
+      href="/dashboard"
+      className={`flex items-center gap-2 justify-center font-medium ${className}`}
     >
       <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
         <Flower className="size-4" />
       </div>
-      Floral Shop
+      {state === "expanded" && <p className="text-lg"> Floral Shop</p>}
     </Link>
   );
 };
