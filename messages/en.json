@@ -13,7 +13,21 @@
         "accounts": "Accounts",
         "products": "Products",
         "categories": "Categories",
-        "settings": "Settings"
+        "payments": "Payments",
+        "orders": "Orders",
+        "settings": "Settings",
+        "no-data-found": "No data found",
+        "no-data-available-yet": "It looks like there's no data available yet.",
+        "page": "Page",
+        "of": "of",
+        "go-to-first-page": "Go to first page",
+        "go-to-last-page": "Go to last page",
+        "go-to-next-page": "Go to next page",
+        "go-to-previous-page": "Go to previous page",
+        "row-of-rows": "{rows} of {totals} rows selected",
+        "row-per-page": "Rows per page",
+        "search": "Search",
+        "add": "Add"
     },
     "title": {
         "login": "Login",

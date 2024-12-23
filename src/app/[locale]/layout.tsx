@@ -4,9 +4,9 @@ import "./globals.css";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
-import { NextIntlClientProvider } from "next-intl";
-import { ClerkProvider } from "@clerk/nextjs";
 import { viVN, enUS } from "@clerk/localizations";
+import { Locale } from "locale";
+import Providers from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,7 +29,7 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
 
@@ -39,19 +39,12 @@ export default async function RootLayout({
   const localization = locale === "vi" ? viVN : enUS;
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      <ClerkProvider
-        localization={localization}
-        appearance={{
-          variables: {
-            colorPrimary: "#e11d48",
-          },
-        }}
-      >
-        <html lang={locale}>
-          <body className={`${inter.className}  antialiased`}>{children}</body>
-        </html>
-      </ClerkProvider>
-    </NextIntlClientProvider>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`${inter.className}  antialiased`}>
+        <Providers messages={messages} localization={localization}>
+          {children}
+        </Providers>
+      </body>
+    </html>
   );
 }

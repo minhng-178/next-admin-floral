@@ -7,6 +7,7 @@ import {
   Settings,
   LayoutDashboard,
   User,
+  Banknote,
 } from "lucide-react";
 import {
   Sidebar,
@@ -37,6 +38,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         title: t("common.accounts"),
         url: "/accounts",
         icon: User,
+      },
+      {
+        title: t("common.payments"),
+        url: "/payments",
+        icon: Banknote,
       },
       {
         title: t("common.products"),

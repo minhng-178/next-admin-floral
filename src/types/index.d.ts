@@ -9,3 +9,7 @@ declare module "env" {
 declare module "menu-types" {
   export * from "@/types/menu";
 }
+
+declare module "locale" {
+  export * from "@/types/locale";
+}

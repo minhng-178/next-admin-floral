@@ -6,24 +6,3 @@ datasource db {
 generator client {
     provider = "prisma-client-js"
 }
-
-model User {
-    id         String  @id @default(cuid())
-    email      String  @unique
-    name       String?
-    password   String?
-    role       Role    @default(CUSTOMER)
-    avatar_url Image[]
-}
-
-model Image {
-    id     String @id @default(cuid())
-    url    String
-    user   User   @relation(fields: [userId], references: [id])
-    userId String
-}
-
-enum Role {
-    CUSTOMER
-    ADMIN
-}
