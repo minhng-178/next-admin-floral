@@ -8,14 +8,12 @@ export default function PrivateLayout({
   children: React.ReactNode;
 }): React.ReactElement {
   return (
-    <>
-      <SidebarProvider>
-        <AppSidebar variant="sidebar" />
-        <SidebarInset>
-          <Navbar />
-          {children}
-        </SidebarInset>
-      </SidebarProvider>
-    </>
+    <SidebarProvider>
+      <AppSidebar variant="sidebar" />
+      <SidebarInset>
+        <Navbar />
+        {children}
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

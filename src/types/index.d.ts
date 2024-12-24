@@ -1,3 +1,5 @@
+declare module "string-format";
+
 declare module "form-types" {
   export * from "@/types/form";
 }

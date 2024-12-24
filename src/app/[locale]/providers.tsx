@@ -1,31 +1,32 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
 import React from "react";
 import { appearance } from "@/configs";
 import { ClerkProvider } from "@clerk/nextjs";
-import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/components/common";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 interface ProvidersProps {
-  messages?: AbstractIntlMessages | undefined;
   localization?: any;
   children: React.ReactNode;
 }
 
 const Providers: React.FC<Readonly<ProvidersProps>> = (props) => {
-  const { messages, localization, children } = props;
+  const { localization, children } = props;
+  const queryClient = new QueryClient();
   return (
-    <NextIntlClientProvider messages={messages}>
-      <ClerkProvider localization={localization} appearance={appearance}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+    <ClerkProvider localization={localization} appearance={appearance}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <QueryClientProvider client={queryClient}>
           {children}
-        </ThemeProvider>
-      </ClerkProvider>
-    </NextIntlClientProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
+    </ClerkProvider>
   );
 };
 

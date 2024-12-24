@@ -27,7 +27,14 @@
         "row-of-rows": "{rows} trong số {totals} hàng đã chọn",
         "row-per-page": "Hàng trên mỗi trang",
         "search": "Tìm kiếm",
-        "add": "Thêm"
+        "add": "Thêm",
+        "asc": "Tăng dần",
+        "desc": "Giảm dần",
+        "copy": "Sao chép ID",
+        "hide": "Ẩn",
+        "view": "Xem",
+        "edit": "Sửa",
+        "delete": "Xóa"
     },
     "title": {
         "login": "Đăng nhập",
@@ -39,7 +46,11 @@
         "forgot-password": "Quên mật khẩu?",
         "or-continue-with": "Hoặc tiếp tục với",
         "login-with": "Đăng nhập với",
-        "do-not-have-account": "Chưa có tài khoản?"
+        "do-not-have-account": "Chưa có tài khoản?",
+        "name": "Tên",
+        "description": "Mô tả",
+        "createAt": "Ngày tạo",
+        "actions": "Thao tác"
     },
     "label": {
         "enter-email": "Nhập email của bạn bên dưới để đăng nhập vào tài khoản của bạn"

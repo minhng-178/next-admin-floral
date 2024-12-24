@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTable, Search } from "@/components/common";
 import { FilterOption } from "base-models";
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Plus, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 
 export interface BreadCrumb {
   title: string;
@@ -26,10 +27,20 @@ export interface ExtraButtonProps {
   onClick?: () => void;
 }
 
+interface QueryConfig {
+  queryKey: any;
+  queryFn: any;
+  defaultPaging?: {
+    page: number;
+    pageSize: number;
+  };
+  queryOptions?: Omit<UseQueryOptions, "queryKey" | "queryFn">;
+}
+
 interface PostViewProps {
   breadcrumb: BreadCrumb[];
   columns: ColumnDef<any, any>[];
-  data: any[];
+  queryConfig: QueryConfig;
   title?: React.ReactNode;
   extraLeft?: React.ReactNode;
   extraButtons?: ExtraButtonProps[];
@@ -60,7 +71,7 @@ interface PostViewProps {
 export function PostView({
   breadcrumb,
   columns,
-  data,
+  queryConfig,
   showAdd,
   showSearch,
   showRefresh,
@@ -68,6 +79,33 @@ export function PostView({
   searchConfig,
 }: PostViewProps) {
   const t = useTranslations();
+
+  const queryEnabled = useMemo(
+    () => queryConfig?.queryOptions?.enabled || true,
+    [queryConfig?.queryOptions?.enabled]
+  );
+
+  const params = {
+    ...queryConfig,
+    defaultPaging: { page: 1, pageSize: 10 },
+  };
+
+  const { data: viewQuery, isLoading } = useQuery<any>({
+    queryKey: [queryConfig?.queryKey],
+    queryFn: () => queryConfig?.queryFn(params.defaultPaging),
+    refetchOnWindowFocus: false,
+    enabled: !!queryEnabled,
+    retry: 1,
+    retryDelay: 1000,
+  });
+
+  const handleChangePagination = useCallback((state: any) => {
+    console.log(state);
+  }, []);
+
+  const handleSearch = useCallback((searchText: string) => {
+    console.log(searchText);
+  }, []);
 
   return (
     <div className="flex flex-col h-full">
@@ -90,6 +128,7 @@ export function PostView({
             {showSearch && (
               <Search
                 placeholder={searchConfig?.placeholder || t("common.search")}
+                onSearch={handleSearch}
               />
             )}
 
@@ -110,7 +149,12 @@ export function PostView({
         </div>
       </header>
       <main className="flex flex-1 flex-col gap-4 p-4 pt-0">
-        <DataTable columns={columns} data={data} />
+        <DataTable
+          columns={columns}
+          isLoading={isLoading}
+          data={viewQuery?.data?.items || []}
+          onPaginationChange={handleChangePagination}
+        />
       </main>
     </div>
   );

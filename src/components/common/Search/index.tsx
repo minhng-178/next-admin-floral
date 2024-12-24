@@ -10,6 +10,7 @@ import { usePathname } from "@/i18n/routing";
 interface SearchInputProps {
   className?: string;
   placeholder?: string;
+  onSearch?: (value: string) => void;
 }
 
 const SearchInput: React.FC<SearchInputProps> = (props) => {
@@ -32,7 +33,7 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
         name="q"
         type="search"
         placeholder={props.placeholder}
-        className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
+        className="w-full rounded-lg bg-background pl-8 md:w-[200px]"
       />
       {isPending && <SpinnerIcon />}
     </form>

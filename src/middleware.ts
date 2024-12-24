@@ -1,12 +1,15 @@
 import { routing } from "./i18n/routing";
 import createMiddleware from "next-intl/middleware";
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 
 const intlMiddleware = createMiddleware(routing);
 
 const isDashboardRoute = createRouteMatcher(["/dashboard(.*)"]);
 
 export default clerkMiddleware(async (auth, request) => {
+  if (request.nextUrl.pathname.startsWith("/api")) return NextResponse.next();
+
   if (isDashboardRoute(request)) await auth.protect();
 
   return intlMiddleware(request);

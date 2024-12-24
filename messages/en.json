@@ -27,7 +27,14 @@
         "row-of-rows": "{rows} of {totals} rows selected",
         "row-per-page": "Rows per page",
         "search": "Search",
-        "add": "Add"
+        "add": "Add",
+        "asc": "Ascending",
+        "desc": "Descending",
+        "hide": "Hide",
+        "copy": "Copy ID",
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
     },
     "title": {
         "login": "Login",
@@ -39,7 +46,11 @@
         "forgot-password": " Forgot your password?",
         "or-continue-with": "Or continue with",
         "login-with": "Login with",
-        "do-not-have-account": "Don't have an account?"
+        "do-not-have-account": "Don't have an account?",
+        "name": "Name",
+        "description": "Description",
+        "createAt": "Create At",
+        "actions": "Actions"
     },
     "label": {
         "enter-email": "Enter your email below to login to your account"
