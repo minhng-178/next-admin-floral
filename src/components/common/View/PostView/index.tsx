@@ -90,7 +90,11 @@ export function PostView({
     defaultPaging: { page: 1, pageSize: 10 },
   };
 
-  const { data: viewQuery, isLoading } = useQuery<any>({
+  const {
+    data: viewQuery,
+    refetch,
+    isLoading,
+  } = useQuery<any>({
     queryKey: [queryConfig?.queryKey],
     queryFn: () => queryConfig?.queryFn(params.defaultPaging),
     refetchOnWindowFocus: false,
@@ -135,7 +139,7 @@ export function PostView({
             {showRefresh && (
               <RotateCcw
                 className="cursor-pointer text-neutral-500 h-5 w-5"
-                onClick={() => {}}
+                onClick={() => refetch()}
               />
             )}
 

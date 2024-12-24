@@ -50,9 +50,20 @@
         "name": "Name",
         "description": "Description",
         "createAt": "Create At",
-        "actions": "Actions"
+        "actions": "Actions",
+        "copied-to-clipboard": "Copied to clipboard",
+        "cancel": "Cancel",
+        "confirm": "Confirm"
     },
     "label": {
         "enter-email": "Enter your email below to login to your account"
+    },
+    "validation": {
+        "required": "This field is required",
+        "email": "Please enter a valid email address",
+        "phone": "Please enter a valid phone number",
+        "password": "Password must be at least 6 characters",
+        "min": "Please enter at least {min} characters",
+        "max": "Please enter no more than {max} characters"
     }
 }

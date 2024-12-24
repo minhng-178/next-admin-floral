@@ -3,9 +3,21 @@ import { Category } from "@prisma/client";
 import { useTranslations } from "next-intl";
 import { ColumnDef } from "@tanstack/react-table";
 import { ActionsDropdown, Header } from "@/components/common";
+import { toast } from "sonner";
+import { useState } from "react";
+import { z } from "zod";
+import { categorySchema } from "@/schemas";
 
 const useCategories = () => {
   const t = useTranslations();
+  const [open, setOpen] = useState(false);
+
+  const onOpenChange = () => setOpen(!open);
+  const onDismiss = () => setOpen(false);
+  async function onSubmit(data: z.infer<typeof categorySchema>) {
+    console.log(data);
+    onDismiss();
+  }
 
   const columns: ColumnDef<Category>[] = [
     {
@@ -44,10 +56,12 @@ const useCategories = () => {
       cell: ({ row }) => {
         return (
           <ActionsDropdown
+            allowCopy
             onView={() => {}}
-            onEdit={() => {}}
+            onEdit={onOpenChange}
             onDelete={() => {}}
             onCopy={() =>
+              toast(t("title.copied-to-clipboard")) &&
               navigator.clipboard.writeText(row.original.id?.toString() || "")
             }
           />
@@ -64,8 +78,12 @@ const useCategories = () => {
   ];
 
   return {
+    open,
     columns,
     breadcrumb,
+    onOpenChange,
+    onDismiss,
+    onSubmit,
   };
 };
 

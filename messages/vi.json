@@ -50,9 +50,20 @@
         "name": "Tên",
         "description": "Mô tả",
         "createAt": "Ngày tạo",
-        "actions": "Thao tác"
+        "actions": "Thao tác",
+        "copied-to-clipboard": "Đã sao chép vào bộ nhớ tạm",
+        "cancel": "Hủy",
+        "confirm": "Xác nhận"
     },
     "label": {
         "enter-email": "Nhập email của bạn bên dưới để đăng nhập vào tài khoản của bạn"
+    },
+    "validation": {
+        "required": "Trường này là bắt buộc",
+        "email": "Email không hợp lệ",
+        "phone": "Số điện thoại không hợp lệ",
+        "password": "Mật khẩu phải chứa ít nhất 6 ký tự",
+        "min": "Trường này phải chứa ít nhất {min} ký tự",
+        "max": "Trường này không được chứa quá {max} ký tự"
     }
 }

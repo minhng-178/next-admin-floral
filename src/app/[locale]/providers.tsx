@@ -5,6 +5,7 @@ import { appearance } from "@/configs";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/common";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 
 interface ProvidersProps {
   localization?: any;
@@ -24,6 +25,7 @@ const Providers: React.FC<Readonly<ProvidersProps>> = (props) => {
       >
         <QueryClientProvider client={queryClient}>
           {children}
+          <SonnerToaster />
         </QueryClientProvider>
       </ThemeProvider>
     </ClerkProvider>
