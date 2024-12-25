@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { viVN, enUS } from "@clerk/localizations";
 import { Locale } from "locale";
 import Providers from "./providers";
@@ -13,13 +13,19 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "%s | Floral Shop",
-    absolute: "Floral Shop",
-  },
-  description: "Floral Shop",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 export default async function RootLayout({
   children,

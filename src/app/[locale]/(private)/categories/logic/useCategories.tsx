@@ -6,7 +6,7 @@ import { ActionsDropdown, Header } from "@/components/common";
 import { toast } from "sonner";
 import { useState } from "react";
 import { z } from "zod";
-import { categorySchema } from "@/schemas";
+import { categorySchema } from "../ui";
 
 const useCategories = () => {
   const t = useTranslations();

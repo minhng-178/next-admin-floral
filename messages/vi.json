@@ -65,5 +65,117 @@
         "password": "Mật khẩu phải chứa ít nhất 6 ký tự",
         "min": "Trường này phải chứa ít nhất {min} ký tự",
         "max": "Trường này không được chứa quá {max} ký tự"
+    },
+    "zod": {
+        "invalid_type": "Cần kiểu dữ liệu là {expected}, nhưng nhận được {received}",
+        "invalid_type_with_path": "{path} cần kiểu dữ liệu là {expected}, nhưng nhận được {received}",
+        "invalid_type_received_undefined": "Thông tin này là bắt buộc",
+        "invalid_literal": "Giá trị không chính xác, mong đợi {expected}",
+        "unrecognized_keys": "Có khóa không xác định trong dữ liệu: {- keys}",
+        "unrecognized_keys_one": "Có khóa không xác định trong dữ liệu: {- keys}",
+        "unrecognized_keys_other": "Có các khóa không xác định trong dữ liệu: {- keys}",
+        "invalid_union": "Dữ liệu đầu vào không hợp lệ",
+        "invalid_union_discriminator": "Giá trị phân loại không đúng. Mong đợi: {- options}",
+        "invalid_enum_value": "Giá trị không hợp lệ. Mong đợi: {- options}, nhận: {received}",
+        "invalid_arguments": "Tham số hàm không hợp lệ",
+        "invalid_return_type": "Kiểu dữ liệu trả về của hàm không hợp lệ",
+        "invalid_date": "Ngày tháng không hợp lệ",
+        "custom": "Dữ liệu không hợp lệ",
+        "invalid_intersection_types": "Không thể kết hợp các giá trị",
+        "not_multiple_of": "Giá trị phải là bội số của {multipleOf}",
+        "not_finite": "Giá trị phải là số hữu hạn",
+        "invalid_string": {
+            "email": "{validation} không đúng định dạng",
+            "url": "{validation} không đúng định dạng",
+            "uuid": "{validation} không đúng định dạng",
+            "cuid": "{validation} không đúng định dạng",
+            "regex": "Không đúng định dạng",
+            "datetime": "{validation} không đúng định dạng",
+            "startsWith": "Dữ liệu phải bắt đầu bằng {startsWith}",
+            "endsWith": "Dữ liệu phải kết thúc bằng {endsWith}"
+        },
+        "too_small": {
+            "array": {
+                "inclusive": "Danh sách phải chứa ít nhất {minimum} phần tử",
+                "inclusive_one": "Danh sách phải chứa ít nhất {minimum} phần tử",
+                "inclusive_other": "Danh sách phải chứa ít nhất {minimum} phần tử",
+                "not_inclusive": "Danh sách phải chứa nhiều hơn {minimum} phần tử",
+                "not_inclusive_one": "Danh sách phải chứa nhiều hơn {minimum} phần tử",
+                "not_inclusive_other": "Danh sách phải chứa nhiều hơn {minimum} phần tử"
+            },
+            "string": {
+                "inclusive": "Chuỗi phải dài ít nhất {minimum} ký tự",
+                "inclusive_one": "Chuỗi phải dài ít nhất {minimum} ký tự",
+                "inclusive_other": "Chuỗi phải dài ít nhất {minimum} ký tự",
+                "inclusive_with_path": "{path} phải dài ít nhất {minimum} ký tự",
+                "inclusive_with_path_one": "{path} phải dài ít nhất {minimum} ký tự",
+                "inclusive_with_path_other": "{path} phải dài ít nhất {minimum} ký tự",
+                "not_inclusive": "Chuỗi phải dài hơn {minimum} ký tự",
+                "not_inclusive_one": "Chuỗi phải dài hơn {minimum} ký tự",
+                "not_inclusive_other": "Chuỗi phải dài hơn {minimum} ký tự",
+                "not_inclusive_with_path": "{path} phải dài hơn {minimum} ký tự",
+                "not_inclusive_with_path_one": "{path} phải dài hơn {minimum} ký tự",
+                "not_inclusive_with_path_other": "{path} phải dài hơn {minimum} ký tự"
+            },
+            "number": {
+                "inclusive": "Số phải lớn hơn hoặc bằng {minimum}",
+                "inclusive_with_path": "{path} phải lớn hơn hoặc bằng {minimum}",
+                "not_inclusive": "Số phải lớn hơn {minimum}",
+                "not_inclusive_with_path": "{path} phải lớn hơn {minimum}"
+            },
+            "set": {
+                "inclusive": "Dữ liệu không đúng định dạng",
+                "not_inclusive": "Dữ liệu không đúng định dạng"
+            },
+            "date": {
+                "inclusive": "Ngày phải lớn hơn hoặc bằng {- minimum, datetime}",
+                "not_inclusive": "Ngày phải lớn hơn {- minimum, datetime}"
+            }
+        },
+        "too_big": {
+            "array": {
+                "inclusive": "Danh sách phải chứa tối đa {maximum} phần tử",
+                "inclusive_one": "Danh sách phải chứa tối đa {maximum} phần tử",
+                "inclusive_other": "Danh sách phải chứa tối đa {maximum} phần tử",
+                "not_inclusive": "Danh sách phải chứa ít hơn {maximum} phần tử",
+                "not_inclusive_one": "Danh sách phải chứa ít hơn {maximum} phần tử",
+                "not_inclusive_other": "Danh sách phải chứa ít hơn {maximum} phần tử"
+            },
+            "string": {
+                "inclusive": "Chuỗi không được dài quá {maximum} ký tự",
+                "inclusive_one": "Chuỗi không được dài quá {maximum} ký tự",
+                "inclusive_other": "Chuỗi không được dài quá {maximum} ký tự",
+                "inclusive_with_path": "{path} không được dài quá {maximum} ký tự",
+                "inclusive_with_path_one": "{path} không được dài quá {maximum} ký tự",
+                "inclusive_with_path_other": "{path} không được dài quá {maximum} ký tự",
+                "not_inclusive": "Chuỗi phải ngắn hơn {maximum} ký tự",
+                "not_inclusive_one": "Chuỗi phải ngắn hơn {maximum} ký tự",
+                "not_inclusive_other": "Chuỗi phải ngắn hơn {maximum} ký tự",
+                "not_inclusive_with_path": "{path} phải ngắn hơn {maximum} ký tự",
+                "not_inclusive_with_path_one": "{path} phải ngắn hơn {maximum} ký tự",
+                "not_inclusive_with_path_other": "{path} phải ngắn hơn {maximum} ký tự"
+            },
+            "number": {
+                "inclusive": "Số phải nhỏ hơn hoặc bằng {maximum}",
+                "inclusive_with_path": "{path} phải nhỏ hơn hoặc bằng {maximum}",
+                "not_inclusive": "Số phải nhỏ hơn {maximum}",
+                "not_inclusive_with_path": "{path} phải nhỏ hơn {maximum}"
+            },
+            "set": {
+                "inclusive": "Dữ liệu không đúng định dạng",
+                "not_inclusive": "Dữ liệu không đúng định dạng"
+            },
+            "date": {
+                "inclusive": "Ngày phải nhỏ hơn hoặc bằng {- maximum, datetime}",
+                "not_inclusive": "Ngày phải nhỏ hơn {- maximum, datetime}"
+            }
+        },
+        "customValidation": {
+            "confirmPassword_match": "Mật khẩu không khớp nhau"
+        }
+    },
+    "metadata": {
+        "title": "Shop hoa tươi Floral",
+        "description": "Cửa hàng hoa tươi"
     }
 }
