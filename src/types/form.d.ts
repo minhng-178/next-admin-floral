@@ -8,3 +8,5 @@ export type FormState =
       message?: string;
     }
   | undefined;
+
+export type FormType = "create" | "update" | undefined;

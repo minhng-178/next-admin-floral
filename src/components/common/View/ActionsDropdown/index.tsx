@@ -16,27 +16,28 @@ import {
 } from "@/components/ui/dropdown-menu";
 import React from "react";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 interface ActionsDropdownProps {
+  id?: string;
+  allowCopy?: boolean;
   allowView?: boolean;
   onView: () => void;
   allowEdit?: boolean;
   onEdit: () => void;
   allowDelete?: boolean;
   onDelete: () => void;
-  allowCopy?: boolean;
-  onCopy: () => void;
 }
 
 const ActionsDropdown: React.FC<ActionsDropdownProps> = ({
+  id,
+  allowCopy,
   allowView = true,
   allowEdit = true,
   allowDelete = true,
-  allowCopy,
   onView,
   onEdit,
   onDelete,
-  onCopy,
 }) => {
   const t = useTranslations();
   return (
@@ -49,7 +50,12 @@ const ActionsDropdown: React.FC<ActionsDropdownProps> = ({
       <DropdownMenuContent align="end">
         {allowCopy && (
           <>
-            <DropdownMenuItem onClick={onCopy}>
+            <DropdownMenuItem
+              onClick={() =>
+                toast(t("title.copied-to-clipboard")) &&
+                navigator.clipboard.writeText(id?.toString() || "")
+              }
+            >
               <FileSpreadsheet className="h-4 w-4 mr-1" />
               {t("common.copy")}
             </DropdownMenuItem>

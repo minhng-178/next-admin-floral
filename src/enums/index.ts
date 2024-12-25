@@ -1,2 +1,3 @@
-export * from "./menu";
-export * from "./network";
+export * from "./menus";
+export * from "./networks";
+export * from "./actions";

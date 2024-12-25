@@ -53,10 +53,20 @@
         "actions": "Thao tác",
         "copied-to-clipboard": "Đã sao chép vào bộ nhớ tạm",
         "cancel": "Hủy",
-        "confirm": "Xác nhận"
+        "confirm": "Xác nhận",
+        "view-item": "Xem chi tiết",
+        "edit-item": "Chỉnh sửa",
+        "delete-item": "Xóa",
+        "create-item": "Thêm mới"
     },
     "label": {
         "enter-email": "Nhập email của bạn bên dưới để đăng nhập vào tài khoản của bạn"
+    },
+    "message": {
+        "create-success": "Tạo mới thành công",
+        "update-success": "Cập nhật thành công",
+        "delete-success": "Xóa thành công",
+        "an-error-occurred": "Đã xảy ra lỗi"
     },
     "validation": {
         "required": "Trường này là bắt buộc",

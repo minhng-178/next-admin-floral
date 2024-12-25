@@ -53,10 +53,20 @@
         "actions": "Actions",
         "copied-to-clipboard": "Copied to clipboard",
         "cancel": "Cancel",
-        "confirm": "Confirm"
+        "confirm": "Confirm",
+        "view-item": "View item",
+        "edit-item": "Edit item",
+        "delete-item": "Delete item",
+        "create-item": "Create item"
     },
     "label": {
         "enter-email": "Enter your email below to login to your account"
+    },
+    "message": {
+        "create-success": "Create successfully",
+        "update-success": "Update successfully",
+        "delete-success": "Delete successfully",
+        "an-error-occurred": "An error occurred"
     },
     "validation": {
         "required": "This field is required",

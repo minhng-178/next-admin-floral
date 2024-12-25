@@ -42,18 +42,21 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="flex flex-col h-full gap-3 overflow-hidden">
+    <div className="flex flex-col h-full gap-3">
       <div className="flex-grow rounded-md border">
         {isLoading ? (
           <Spinner size={"large"} />
         ) : (
           <Table>
-            <TableHeader>
+            <TableHeader className="bg-neutral-200">
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHead key={header.id}>
+                      <TableHead
+                        key={header.id}
+                        className="text-left text-black"
+                      >
                         {header.isPlaceholder
                           ? null
                           : flexRender(

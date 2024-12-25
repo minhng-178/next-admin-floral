@@ -23,19 +23,19 @@ export default function ResponsiveDialog({
   open,
   title,
   description,
-  onOpenChange,
+  onDismiss,
 }: {
   children: React.ReactNode;
   open: boolean;
   title: string;
   description?: string;
-  onOpenChange: () => void;
+  onDismiss: () => void;
 }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (isDesktop) {
     return (
-      <Dialog open={open} onOpenChange={onOpenChange}>
+      <Dialog open={open} onOpenChange={onDismiss}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>{title}</DialogTitle>
@@ -50,7 +50,7 @@ export default function ResponsiveDialog({
   }
 
   return (
-    <Drawer open={open} onOpenChange={onOpenChange}>
+    <Drawer open={open} onOpenChange={onDismiss}>
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>{title}</DrawerTitle>

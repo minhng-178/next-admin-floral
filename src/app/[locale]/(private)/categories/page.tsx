@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
+import { EActions } from "@/enums";
 import { useCategories } from "./logic";
-import { PostView, ResponsiveDialog } from "@/components/common";
 import CategoryService from "@/services/category.service";
-import { CategoryForm } from "./ui";
+import { PostView, ResponsiveDialog } from "@/components/common";
 
 export default function CategoriesPage(): React.ReactElement {
-  const { open, columns, breadcrumb, onOpenChange, onDismiss, onSubmit } =
+  const { open, columns, formConfig, breadcrumb, onOpenChange, onDismiss } =
     useCategories();
 
   return (
@@ -21,18 +21,18 @@ export default function CategoriesPage(): React.ReactElement {
         }}
         showAdd
         addConfig={{
-          onClick: onOpenChange,
+          onClick: () => onOpenChange(EActions.CREATE),
         }}
         showSearch
         showRefresh
       />
 
       <ResponsiveDialog
-        title="Add Category"
+        title={formConfig.title}
         open={open}
-        onOpenChange={onOpenChange}
+        onDismiss={onDismiss}
       >
-        <CategoryForm onSubmit={onSubmit} onDismiss={onDismiss} />
+        {formConfig.children}
       </ResponsiveDialog>
     </>
   );

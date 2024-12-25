@@ -29,7 +29,7 @@ interface CategoryFormProps {
 }
 
 const CategoryForm: React.FC<CategoryFormProps> = (props) => {
-  const { defaultValues, onSubmit, onDismiss } = props;
+  const { defaultValues, submitting, onSubmit, onDismiss } = props;
   const t = useTranslations();
   const errorMap = useZodMapError();
 
@@ -94,7 +94,7 @@ const CategoryForm: React.FC<CategoryFormProps> = (props) => {
           </Button>
           <Button
             type="submit"
-            disabled={form.formState.isSubmitting}
+            disabled={form.formState.isSubmitting || submitting}
             className="w-full sm:w-auto"
           >
             {t("title.confirm")}
