@@ -95,7 +95,7 @@ export function PostView({
     refetch,
     isLoading,
   } = useQuery<any>({
-    queryKey: [queryConfig?.queryKey],
+    queryKey: queryConfig?.queryKey,
     queryFn: () => queryConfig?.queryFn(params.defaultPaging),
     refetchOnWindowFocus: false,
     enabled: !!queryEnabled,

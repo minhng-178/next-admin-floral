@@ -1,98 +1,93 @@
-datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+generator client {
+  provider = "prisma-client-js"
 }
 
-generator client {
-    provider = "prisma-client-js"
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-    id        Int      @id @default(autoincrement())
-    name      String
-    email     String   @unique
-    password  String
-    role      Role     @default(USER)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    orders Order[]
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Order[]
 }
 
 model Flower {
-    id          Int         @id @default(autoincrement())
-    name        String
-    description String?
-    price       Float
-    stock       Int         @default(0)
-    imageUrl    String?
-    createdAt   DateTime    @default(now())
-    updatedAt   DateTime    @updatedAt
-    status      Boolean     @default(true)
-    categoryId  Int
-    category    Category    @relation(fields: [categoryId], references: [id])
-    images      Image[]
-    orderItems  OrderItem[]
+  id          String      @id @default(uuid())
+  name        String
+  description String?
+  price       Float
+  stock       Int         @default(0)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  status      Boolean     @default(true)
+  categoryId  String
+  category    Category    @relation(fields: [categoryId], references: [id])
+  images      Image[]
+  orderItems  OrderItem[]
 }
 
 model Order {
-    id         Int         @id @default(autoincrement())
-    userId     Int
-    totalPrice Float
-    status     OrderStatus @default(PENDING)
-    createdAt  DateTime    @default(now())
-    updatedAt  DateTime    @updatedAt
-
-    user  User        @relation(fields: [userId], references: [id])
-    items OrderItem[]
+  id         String      @id @default(uuid())
+  userId     String
+  totalPrice Float
+  status     OrderStatus @default(PENDING)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  User       User        @relation(fields: [userId], references: [id])
+  items      OrderItem[]
 }
 
 model OrderItem {
-    id       Int   @id @default(autoincrement())
-    orderId  Int
-    flowerId Int
-    quantity Int
-    price    Float
-
-    order  Order  @relation(fields: [orderId], references: [id])
-    flower Flower @relation(fields: [flowerId], references: [id])
+  id       String @id @default(uuid())
+  orderId  String
+  flowerId String
+  quantity Int
+  price    Float
+  flower   Flower @relation(fields: [flowerId], references: [id])
+  order    Order  @relation(fields: [orderId], references: [id])
 }
 
 model Category {
-    id          Int      @id @default(autoincrement())
-    name        String   @unique
-    description String?
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    status      Boolean  @default(true)
-    flowers     Flower[]
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  status      Boolean  @default(true)
+  flowers     Flower[]
 }
 
 model Image {
-    id       Int            @id @default(autoincrement())
-    url      String
-    type     AttachmentType @default(IMAGE)
-    altText  String?
-    status   Boolean        @default(true)
-    flowerId Int
-
-    flower Flower @relation(fields: [flowerId], references: [id])
+  id       String         @id @default(uuid())
+  url      String
+  type     AttachmentType @default(IMAGE)
+  altText  String?
+  status   Boolean        @default(true)
+  flowerId String
+  flower   Flower         @relation(fields: [flowerId], references: [id])
 }
 
 enum Role {
-    ADMIN
-    USER
+  ADMIN
+  USER
 }
 
 enum OrderStatus {
-    PENDING
-    COMPLETED
-    CANCELLED
+  PENDING
+  COMPLETED
+  CANCELLED
 }
 
 enum AttachmentType {
-    IMAGE
-    VIDEO
-    AUDIO
-    DOCUMENT
+  IMAGE
+  VIDEO
+  AUDIO
+  DOCUMENT
 }

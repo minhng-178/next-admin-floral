@@ -27,7 +27,7 @@ export default class CategoryService {
     id: string,
     payload: any
   ): Promise<BaseResponse<Category>> {
-    return (await http.put(stringBuilder(categoryPath.UPDATE, id), payload))
+    return (await http.patch(stringBuilder(categoryPath.UPDATE, id), payload))
       .data;
   }
 

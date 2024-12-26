@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { z } from "zod";
 import { Category } from "@prisma/client";
 import { useForm } from "react-hook-form";
@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from "next-intl";
 import { useZodMapError } from "@/hooks";
+import { Spinner } from "@/components/ui/spinner";
 
 export const categorySchema = z.object({
   name: z.string().min(1),
@@ -24,12 +25,13 @@ export const categorySchema = z.object({
 interface CategoryFormProps {
   defaultValues?: Category;
   submitting?: boolean;
+  isLoading?: boolean;
   onSubmit: (data: z.infer<typeof categorySchema>) => void;
   onDismiss: () => void;
 }
 
 const CategoryForm: React.FC<CategoryFormProps> = (props) => {
-  const { defaultValues, submitting, onSubmit, onDismiss } = props;
+  const { defaultValues, submitting, isLoading, onSubmit, onDismiss } = props;
   const t = useTranslations();
   const errorMap = useZodMapError();
 
@@ -40,6 +42,17 @@ const CategoryForm: React.FC<CategoryFormProps> = (props) => {
     },
     resolver: zodResolver(categorySchema, { errorMap }),
   });
+
+  useEffect(() => {
+    form.reset({
+      name: defaultValues?.name || "",
+      description: defaultValues?.description || "",
+    });
+  }, [defaultValues, form]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <Form {...form}>
@@ -83,7 +96,7 @@ const CategoryForm: React.FC<CategoryFormProps> = (props) => {
           )}
         />
 
-        <div className="flex justify-end w-full mt-4">
+        <div className="flex w-full mt-4">
           <Button
             type="button"
             variant={"secondary"}

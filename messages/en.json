@@ -34,7 +34,8 @@
         "copy": "Copy ID",
         "view": "View",
         "edit": "Edit",
-        "delete": "Delete"
+        "delete": "Delete",
+        "cannot-be-undone": "This action cannot be undone. This will permanently delete your data."
     },
     "title": {
         "login": "Login",
@@ -57,7 +58,9 @@
         "view-item": "View item",
         "edit-item": "Edit item",
         "delete-item": "Delete item",
-        "create-item": "Create item"
+        "create-item": "Create item",
+        "are-you-sure": "Are you absolutely sure?",
+        "continue": "Continue"
     },
     "label": {
         "enter-email": "Enter your email below to login to your account"

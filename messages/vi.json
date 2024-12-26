@@ -34,7 +34,8 @@
         "hide": "Ẩn",
         "view": "Xem",
         "edit": "Sửa",
-        "delete": "Xóa"
+        "delete": "Xóa",
+        "cannot-be-undone": "Hành động này không thể hoàn tác. Điều này sẽ xóa vĩnh viễn dữ liệu của bạn và xóa dữ liệu của bạn."
     },
     "title": {
         "login": "Đăng nhập",
@@ -57,7 +58,9 @@
         "view-item": "Xem chi tiết",
         "edit-item": "Chỉnh sửa",
         "delete-item": "Xóa",
-        "create-item": "Thêm mới"
+        "create-item": "Thêm mới",
+        "are-you-sure": "Bạn có chắc chắn muốn xóa không?",
+        "continue": "Tiếp tục"
     },
     "label": {
         "enter-email": "Nhập email của bạn bên dưới để đăng nhập vào tài khoản của bạn"

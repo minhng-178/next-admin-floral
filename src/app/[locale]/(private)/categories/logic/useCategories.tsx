@@ -8,7 +8,7 @@ import { ViewUtil } from "@/utils";
 import { EActions } from "@/enums";
 import { Category } from "@prisma/client";
 import CategoryService from "@/services/category.service";
-import { ActionsDropdown, Header } from "@/components/common";
+import { ActionsDropdown, DeleteDialog, Header } from "@/components/common";
 import { CategoryCard, CategoryForm, categorySchema } from "@/modules";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -19,6 +19,7 @@ type FormMappingValues = {
 
 const useCategories = () => {
   const t = useTranslations();
+
   const {
     value: open,
     setTrue: setOpen,
@@ -30,12 +31,12 @@ const useCategories = () => {
     setFalse: setFetched,
   } = useBoolean(false);
   const [actions, setActions] = useState<EActions>(EActions.CREATE);
-  const [id, setId] = useState<string | number | null>(null);
+  const [id, setId] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { data: category, isLoading } = useQuery({
     queryKey: ["category", id],
     queryFn: () => CategoryService.detail(id?.toString() || ""),
-    enabled: !!open,
+    enabled: !!id,
   });
 
   const createCategoryMutation = useMutation({
@@ -100,13 +101,14 @@ const useCategories = () => {
     },
   });
 
-  function onOpenChange(action: EActions, id?: string | number) {
-    setId(id || null);
+  function onOpenChange(action: EActions, id?: string) {
+    setId(id || "");
     setActions(action);
     setOpen();
   }
 
   function onDismiss() {
+    setId(null);
     setClose();
   }
 
@@ -118,6 +120,64 @@ const useCategories = () => {
       updateCategoryMutation.mutate(data);
     }
   }
+
+  function formConfigMap(action: EActions): FormMappingValues {
+    const mappingValues: Record<EActions, FormMappingValues> = {
+      [EActions.CREATE]: {
+        title: t("title.create-item"),
+        children: (
+          <CategoryForm
+            submitting={fetching}
+            onSubmit={onSubmit}
+            onDismiss={onDismiss}
+          />
+        ),
+      },
+      [EActions.UPDATE]: {
+        title: t("title.edit-item"),
+        children: (
+          <CategoryForm
+            isLoading={isLoading}
+            submitting={fetching}
+            onSubmit={onSubmit}
+            onDismiss={onDismiss}
+            defaultValues={{
+              name: category?.data?.name || "",
+              id: category?.data?.id || "",
+              description: category?.data?.description || null,
+              createdAt: category?.data?.createdAt || new Date(),
+              updatedAt: category?.data?.updatedAt || new Date(),
+              status: category?.data?.status || false,
+            }}
+          />
+        ),
+      },
+      [EActions.VIEW]: {
+        title: t("title.view-item"),
+        children: (
+          <CategoryCard
+            isLoading={isLoading}
+            name={category?.data?.name || ""}
+            description={category?.data?.description || ""}
+            createdAt={category?.data?.createdAt?.toString() || ""}
+          />
+        ),
+      },
+      [EActions.DELETE]: {
+        title: t("title.delete-item"),
+        children: (
+          <DeleteDialog
+            submitting={fetching}
+            onDismiss={onDismiss}
+            onClick={() => deleteCategoryMutation.mutate(id?.toString() || "")}
+          />
+        ),
+      },
+    };
+    return mappingValues[action];
+  }
+
+  const formConfig = formConfigMap(actions);
 
   const columns: ColumnDef<Category>[] = [
     {
@@ -164,57 +224,6 @@ const useCategories = () => {
       },
     },
   ];
-
-  function formConfigMap(action: EActions): FormMappingValues {
-    const mappingValues: Record<EActions, FormMappingValues> = {
-      [EActions.CREATE]: {
-        title: t("title.create-item"),
-        children: (
-          <CategoryForm
-            submitting={fetching}
-            onSubmit={onSubmit}
-            onDismiss={onDismiss}
-          />
-        ),
-      },
-      [EActions.UPDATE]: {
-        title: t("title.edit-item"),
-        children: (
-          <CategoryForm
-            submitting={fetching}
-            onSubmit={onSubmit}
-            onDismiss={onDismiss}
-            defaultValues={{
-              name: category?.data?.name || "",
-              id: category?.data?.id || 0,
-              description: category?.data?.description || null,
-              createdAt: category?.data?.createdAt || new Date(),
-              updatedAt: category?.data?.updatedAt || new Date(),
-              status: category?.data?.status || false,
-            }}
-          />
-        ),
-      },
-      [EActions.VIEW]: {
-        title: t("title.view-item"),
-        children: (
-          <CategoryCard
-            isLoading={isLoading}
-            name={category?.data?.name || ""}
-            description={category?.data?.description || ""}
-            createdAt={category?.data?.createdAt?.toString() || ""}
-          />
-        ),
-      },
-      [EActions.DELETE]: {
-        title: t("title.delete-item"),
-        children: <CategoryCard />,
-      },
-    };
-    return mappingValues[action];
-  }
-
-  const formConfig = formConfigMap(actions);
 
   const breadcrumb = [
     {
