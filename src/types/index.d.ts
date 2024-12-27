@@ -15,3 +15,7 @@ declare module "menu-types" {
 declare module "locale" {
   export * from "@/types/locale";
 }
+
+declare module "upload" {
+  export * from "@/types/upload";
+}

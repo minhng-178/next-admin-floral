@@ -5,3 +5,7 @@ declare module "base-models" {
 declare module "payment-models" {
   export * from "@/models/payment";
 }
+
+declare module "upload-models" {
+  export * from "@/models/upload";
+}
