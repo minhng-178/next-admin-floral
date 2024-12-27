@@ -1,11 +1,13 @@
-import { PostView, ResponsiveDialog } from "@/components/common";
+"use client";
+
 import React from "react";
+import { EActions } from "@/enums";
 import { useFlowers } from "./logic";
 import FlowerService from "@/services/flower.service";
-import { EActions } from "@/enums";
+import { PostView, ResponsiveSheet } from "@/components/common";
 
 export default function FlowersPage(): React.ReactElement {
-  const { open, actions, columns, breadcrumb, onDismiss, onOpenChange } =
+  const { open, formConfig, columns, breadcrumb, onDismiss, onOpenChange } =
     useFlowers();
 
   return (
@@ -18,20 +20,20 @@ export default function FlowersPage(): React.ReactElement {
         }}
         breadcrumb={breadcrumb}
         showAdd
-        // addConfig={{
-        //   onClick: () => actions.onOpenChange(EActions.CREATE),
-        // }}
+        addConfig={{
+          onClick: () => onOpenChange(EActions.CREATE),
+        }}
         showRefresh
         showSearch
       />
 
-      {/* <ResponsiveDialog
+      <ResponsiveSheet
         title={formConfig.title}
         open={open}
         onDismiss={onDismiss}
       >
         {formConfig.children}
-      </ResponsiveDialog> */}
+      </ResponsiveSheet>
     </>
   );
 }

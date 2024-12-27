@@ -36,7 +36,22 @@
         "view": "Xem",
         "edit": "Sửa",
         "delete": "Xóa",
-        "cannot-be-undone": "Hành động này không thể hoàn tác. Điều này sẽ xóa vĩnh viễn dữ liệu của bạn và xóa dữ liệu của bạn."
+        "cannot-be-undone": "Hành động này không thể hoàn tác. Điều này sẽ xóa vĩnh viễn dữ liệu của bạn và xóa dữ liệu của bạn.",
+        "files": "Tệp",
+        "file": "Tệp",
+        "uploading": "Đang tải lên {target}...",
+        "uploaded": "Đã tải lên {target}",
+        "drop-the-file-here": "Kéo và thả tệp vào đây",
+        "drag-and-drop-files": "Kéo và thả tệp vào đây hoặc nhấp để chọn",
+        "you-can-upload": "Bạn có thể tải tệp lên",
+        "multiple": "nhiều",
+        "file-up-to": " tệp (tối đa {max} mỗi tệp)",
+        "a-file-with": "Một tệp với {max}",
+        "remove-file": "Xóa tệp",
+        "uploaded-files": "Tệp đã tải lên",
+        "view-the-uploaded-files-here": "Xem các tệp đã tải lên ở đây",
+        "no-files-uploaded": "Không có tệp nào được tải lên",
+        "upload-some-files-to-see-them-here": "Upload some files to see them here"
     },
     "title": {
         "login": "Đăng nhập",
@@ -52,6 +67,10 @@
         "name": "Tên",
         "description": "Mô tả",
         "createAt": "Ngày tạo",
+        "price": "Giá",
+        "stock": "Số lượng",
+        "category": "Danh mục",
+        "image": "Hình ảnh",
         "actions": "Thao tác",
         "copied-to-clipboard": "Đã sao chép vào bộ nhớ tạm",
         "cancel": "Hủy",
@@ -70,7 +89,12 @@
         "create-success": "Tạo mới thành công",
         "update-success": "Cập nhật thành công",
         "delete-success": "Xóa thành công",
-        "an-error-occurred": "Đã xảy ra lỗi"
+        "an-error-occurred": "Đã xảy ra lỗi",
+        "can-not-upload-more-than-1": "Không thể tải lên nhiều hơn 1 tệp trong cùng một lúc",
+        "can-not-upload-max-files": "Không thể tải lên nhiều hơn {max} tệp",
+        "can-not-upload-file-type": "Không thể tải lên tệp loại {type}",
+        "file-rejected": "Tệp {name} bị từ chối",
+        "failed-to-upload": "Không thể tải lên tệp {target}"
     },
     "validation": {
         "required": "Trường này là bắt buộc",

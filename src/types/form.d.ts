@@ -10,3 +10,8 @@ export type FormState =
   | undefined;
 
 export type FormType = "create" | "update" | undefined;
+
+export type FormMappingValues = {
+  title: string;
+  children: React.ReactNode;
+};

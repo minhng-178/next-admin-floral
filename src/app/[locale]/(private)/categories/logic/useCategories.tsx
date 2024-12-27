@@ -11,11 +11,7 @@ import CategoryService from "@/services/category.service";
 import { ActionsDropdown, DeleteDialog, Header } from "@/components/common";
 import { CategoryCard, CategoryForm, categorySchema } from "@/modules";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-
-type FormMappingValues = {
-  title: string;
-  children: React.ReactNode;
-};
+import { FormMappingValues } from "form-types";
 
 const useCategories = () => {
   const t = useTranslations();

@@ -2,7 +2,7 @@ import React from "react";
 import { toast } from "sonner";
 import { getErrorMessage } from "@/helpers";
 import UploadService from "@/services/upload.service";
-import { File } from "upload-models";
+
 import { CloudinaryResponse } from "upload";
 
 export function useUploadFile({ defaultUploadedFiles = [] }) {
@@ -27,7 +27,7 @@ export function useUploadFile({ defaultUploadedFiles = [] }) {
           setProgresses((prev) => {
             const updatedProgresses = { ...prev };
             files.forEach((file) => {
-              updatedProgresses[file.filename] = progress;
+              updatedProgresses[file.name] = progress;
             });
             return updatedProgresses;
           });

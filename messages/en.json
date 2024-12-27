@@ -36,7 +36,22 @@
         "view": "View",
         "edit": "Edit",
         "delete": "Delete",
-        "cannot-be-undone": "This action cannot be undone. This will permanently delete your data."
+        "cannot-be-undone": "This action cannot be undone. This will permanently delete your data.",
+        "files": "Files",
+        "file": "File",
+        "uploading": "Uploading {target}...",
+        "uploaded": "{target} uploaded",
+        "drop-the-files-here": "Drop the files here",
+        "drag-and-drop-files": "Drag and drop files here or click to upload",
+        "you-can-upload": "You can upload",
+        "multiple": "multiple",
+        "file-up-to": " files (up to {max} each)",
+        "a-file-with": "A file with {max}",
+        "remove-file": "Remove file",
+        "uploaded-files": "Uploaded files",
+        "view-the-uploaded-files-here": "View the uploaded files here",
+        "no-files-uploaded": "No files uploaded",
+        "upload-some-files-to-see-them-here": "Upload some files to see them here"
     },
     "title": {
         "login": "Login",
@@ -52,6 +67,10 @@
         "name": "Name",
         "description": "Description",
         "createAt": "Create At",
+        "price": "Price",
+        "stock": "Stock",
+        "category": "Category",
+        "image": "Image",
         "actions": "Actions",
         "copied-to-clipboard": "Copied to clipboard",
         "cancel": "Cancel",
@@ -70,7 +89,12 @@
         "create-success": "Create successfully",
         "update-success": "Update successfully",
         "delete-success": "Delete successfully",
-        "an-error-occurred": "An error occurred"
+        "an-error-occurred": "An error occurred",
+        "can-not-upload-more-than-1": "Cannot upload more than 1 file at a time",
+        "can-not-upload-max-files": "Cannot upload more than {max} files",
+        "can-not-upload-file-type": "Cannot upload file of type {type}",
+        "file-rejected": "File {name} was rejected",
+        "failed-to-upload": "Failed to upload {target}"
     },
     "validation": {
         "required": "This field is required",

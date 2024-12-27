@@ -46,7 +46,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       },
       {
         title: t("common.products"),
-        url: "/products",
+        url: "/flowers",
         icon: Flower2,
       },
       {

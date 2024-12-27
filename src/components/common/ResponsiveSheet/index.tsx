@@ -1,12 +1,3 @@
-import * as React from "react";
-
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import {
   Drawer,
   DrawerClose,
@@ -15,8 +6,18 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import { DialogDescription } from "@radix-ui/react-dialog";
 import { useMediaQuery } from "usehooks-ts";
-export default function ResponsiveDialog({
+
+export default function ResponsiveSheet({
   children,
   open,
   title,
@@ -30,20 +31,17 @@ export default function ResponsiveDialog({
   onDismiss: () => void;
 }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
-
   if (isDesktop) {
     return (
-      <Dialog open={open} onOpenChange={onDismiss}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>{title}</DialogTitle>
-            {description && (
-              <DialogDescription>{description}</DialogDescription>
-            )}
-          </DialogHeader>
-          {children}
-        </DialogContent>
-      </Dialog>
+      <Sheet open={open} onOpenChange={onDismiss}>
+        <SheetContent className="sm:max-w-[465px]">
+          <SheetHeader className="text-left">
+            <SheetTitle>{title}</SheetTitle>
+            {description && <SheetDescription>{description}</SheetDescription>}
+          </SheetHeader>
+          <ScrollArea className="h-full">{children}</ScrollArea>
+        </SheetContent>
+      </Sheet>
     );
   }
 
@@ -54,7 +52,7 @@ export default function ResponsiveDialog({
           <DrawerTitle>{title}</DrawerTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DrawerHeader>
-        {children}
+        <ScrollArea>{children}</ScrollArea>
         <DrawerFooter className="pt-2">
           <DrawerClose onClick={onDismiss} />
         </DrawerFooter>
