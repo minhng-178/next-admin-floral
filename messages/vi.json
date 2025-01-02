@@ -51,7 +51,9 @@
         "uploaded-files": "Tệp đã tải lên",
         "view-the-uploaded-files-here": "Xem các tệp đã tải lên ở đây",
         "no-files-uploaded": "Không có tệp nào được tải lên",
-        "upload-some-files-to-see-them-here": "Upload some files to see them here"
+        "upload-some-files-to-see-them-here": "Upload some files to see them here",
+        "select-all": "Chọn tất cả",
+        "more": "Xem thêm"
     },
     "title": {
         "login": "Đăng nhập",
@@ -80,10 +82,14 @@
         "delete-item": "Xóa",
         "create-item": "Thêm mới",
         "are-you-sure": "Bạn có chắc chắn muốn xóa không?",
-        "continue": "Tiếp tục"
+        "continue": "Tiếp tục",
+        "close": "Đóng",
+        "clear": "Xóa",
+        "save": "Lưu"
     },
     "label": {
-        "enter-email": "Nhập email của bạn bên dưới để đăng nhập vào tài khoản của bạn"
+        "enter-email": "Nhập email của bạn bên dưới để đăng nhập vào tài khoản của bạn",
+        "select-category": "Chọn danh mục"
     },
     "message": {
         "create-success": "Tạo mới thành công",

@@ -1,4 +1,4 @@
-import { FileUploader, PreviewFile } from "@/components/common";
+import { FileUploader, PreviewFile, SelectCategory } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -25,7 +25,8 @@ export const flowerSchema = z.object({
   price: z.number().positive().min(1),
   stock: z.number().positive().max(100000),
   description: z.string().min(1).optional(),
-  images: z.array(z.instanceof(File)).optional(),
+  categoryId: z.string().min(1),
+  images: z.array(z.instanceof(File)).min(1).max(4),
 });
 
 interface FlowerFormProps {
@@ -68,6 +69,7 @@ const FlowerForm: React.FC<FlowerFormProps> = (props) => {
       description: defaultValues?.description || "",
       price: defaultValues?.price || 0,
       stock: defaultValues?.stock || 0,
+      images: [],
     });
   }, [defaultValues, form]);
 
@@ -110,7 +112,12 @@ const FlowerForm: React.FC<FlowerFormProps> = (props) => {
                   <FormLabel>{t("title.price")}</FormLabel>
                   <FormControl>
                     <Input
-                      {...field}
+                      value={field.value}
+                      onChange={(e) =>
+                        field.onChange(
+                          e.target.value ? Number(e.target.value) : ""
+                        )
+                      }
                       type="number"
                       placeholder={t("title.price")}
                       className="text-md"
@@ -128,10 +135,33 @@ const FlowerForm: React.FC<FlowerFormProps> = (props) => {
                   <FormLabel>{t("title.stock")}</FormLabel>
                   <FormControl>
                     <Input
-                      {...field}
+                      value={field.value}
+                      onChange={(e) =>
+                        field.onChange(
+                          e.target.value ? Number(e.target.value) : ""
+                        )
+                      }
                       type="number"
                       placeholder={t("title.stock")}
                       className="text-md"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              name="categoryId"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="col-span-2">
+                  <FormLabel>{t("title.category")}</FormLabel>
+                  <FormControl>
+                    <SelectCategory
+                      placeholder={t("label.select-category")}
+                      value={field.value}
+                      onChange={(value) => field.onChange(value)}
                     />
                   </FormControl>
                   <FormMessage />

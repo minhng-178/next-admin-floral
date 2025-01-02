@@ -3,7 +3,12 @@
 import React, { useCallback, useMemo } from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTable, Search } from "@/components/common";
-import { FilterOption } from "base-models";
+import {
+  BaseResponse,
+  FilterOption,
+  PagingResponse,
+  QueryConfig,
+} from "base-models";
 import { useTranslations } from "next-intl";
 import {
   Breadcrumb,
@@ -13,7 +18,8 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Plus, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useQuery, UseQueryOptions } from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import { AnyFunction } from "function";
 
 export interface BreadCrumb {
   title: string;
@@ -24,17 +30,7 @@ export interface ExtraButtonProps {
   key?: string;
   title?: React.ReactNode;
   icon?: React.ReactNode;
-  onClick?: () => void;
-}
-
-interface QueryConfig {
-  queryKey: any;
-  queryFn: any;
-  defaultPaging?: {
-    page: number;
-    pageSize: number;
-  };
-  queryOptions?: Omit<UseQueryOptions, "queryKey" | "queryFn">;
+  onClick?: AnyFunction;
 }
 
 interface PostViewProps {
@@ -63,7 +59,7 @@ interface PostViewProps {
   addConfig?: {
     text?: string;
     icon?: React.ReactNode;
-    onClick?: () => void;
+    onClick?: AnyFunction;
     customRender?: React.ReactNode;
   };
 }
@@ -94,7 +90,7 @@ export function PostView({
     data: viewQuery,
     refetch,
     isLoading,
-  } = useQuery<any>({
+  }: UseQueryResult<BaseResponse<PagingResponse<any>>> = useQuery({
     queryKey: queryConfig?.queryKey,
     queryFn: () => queryConfig?.queryFn(params.defaultPaging),
     refetchOnWindowFocus: false,

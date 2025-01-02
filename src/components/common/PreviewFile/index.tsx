@@ -31,9 +31,12 @@ function UploadedFilesCard({ uploadedFiles }: UploadedFilesCardProps) {
           <ScrollArea className="pb-4">
             <div className="flex w-max space-x-2.5">
               {uploadedFiles.map((file) => (
-                <div key={file.key} className="relative aspect-video w-64">
+                <div
+                  key={file.public_id}
+                  className="relative aspect-video w-64"
+                >
                   <Image
-                    src={file.url}
+                    src={file.secure_url}
                     alt={file.name}
                     fill
                     sizes="(min-width: 640px) 640px, 100vw"

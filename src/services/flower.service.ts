@@ -4,6 +4,7 @@ import { Flower } from "@prisma/client";
 import stringBuilder from "string-format";
 import { BaseResponse, PagingResponse, ParamsRequest } from "base-models";
 import { flowerPath } from "@/constants";
+import { FlowerPayload } from "flower-models";
 
 export default class FlowerService {
   static async list(
@@ -19,11 +20,14 @@ export default class FlowerService {
     return (await http.get(stringBuilder(flowerPath.DETAIL, id)))?.data;
   }
 
-  static async create(payload: any): Promise<BaseResponse<Flower>> {
+  static async create(payload: FlowerPayload): Promise<BaseResponse<Flower>> {
     return (await http.post(flowerPath.CREATE, payload)).data;
   }
 
-  static async update(id: string, payload: any): Promise<BaseResponse<Flower>> {
+  static async update(
+    id: string,
+    payload: FlowerPayload
+  ): Promise<BaseResponse<Flower>> {
     return (await http.patch(stringBuilder(flowerPath.UPDATE, id), payload))
       .data;
   }

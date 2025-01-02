@@ -1,5 +1,4 @@
 import createNextIntlPlugin from "next-intl/plugin";
-
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
@@ -12,6 +11,15 @@ const nextConfig = {
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,
     NEXT_PUBLIC_CLERK_SIGN_UP_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_UP_URL,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https" as const,
+        hostname: "res.cloudinary.com",
+      },
+    ],
+  },
+
   async redirects() {
     return [
       {

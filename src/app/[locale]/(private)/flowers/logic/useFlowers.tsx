@@ -7,6 +7,7 @@ import { ViewUtil } from "@/utils";
 import { AttachmentType, Flower, Image } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ColumnDef } from "@tanstack/react-table";
+import { FlowerPayload } from "flower-models";
 import { FormMappingValues } from "form-types";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -41,8 +42,7 @@ const useFlowers = () => {
   });
 
   const createFlowerMutation = useMutation({
-    mutationFn: (data: z.infer<typeof flowerSchema>) =>
-      FlowerService.create(data),
+    mutationFn: (data: FlowerPayload) => FlowerService.create(data),
     onMutate: () => {
       setFetching();
     },
@@ -62,8 +62,7 @@ const useFlowers = () => {
   });
 
   const updateFlowerMutation = useMutation({
-    mutationFn: (data: z.infer<typeof flowerSchema>) =>
-      FlowerService.update(id || "", data),
+    mutationFn: (data: FlowerPayload) => FlowerService.update(id || "", data),
     onMutate: () => {
       setFetching();
     },
@@ -123,17 +122,24 @@ const useFlowers = () => {
           id: image.public_id,
           url: image.secure_url,
           type: AttachmentType.IMAGE,
-          altText: image.original_filename,
+          altText: image.original_filename || "",
+          flowerId: "",
           status: true,
         };
       });
       images.push(...formatImages);
-    }
 
-    if (actions === EActions.CREATE) {
-      createFlowerMutation.mutate(data);
-    } else {
-      updateFlowerMutation.mutate(data);
+      const payload = {
+        ...data,
+        images,
+        description: data.description || "",
+      };
+
+      if (actions === EActions.CREATE) {
+        createFlowerMutation.mutate(payload);
+      } else {
+        updateFlowerMutation.mutate(payload);
+      }
     }
   }
 

@@ -1,3 +1,5 @@
+import { Readable } from "stream";
+
 export interface UploadApiResponse {
   public_id: string;
   version: number;

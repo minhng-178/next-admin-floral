@@ -2,7 +2,6 @@ import React from "react";
 import { toast } from "sonner";
 import { getErrorMessage } from "@/helpers";
 import UploadService from "@/services/upload.service";
-
 import { CloudinaryResponse } from "upload";
 
 export function useUploadFile({ defaultUploadedFiles = [] }) {
@@ -34,7 +33,7 @@ export function useUploadFile({ defaultUploadedFiles = [] }) {
         }
       );
 
-      setUploadedFiles((prev) => (prev ? [...prev, ...res] : res));
+      setUploadedFiles(res);
     } catch (err) {
       toast.error(getErrorMessage(err));
     } finally {

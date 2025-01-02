@@ -51,7 +51,9 @@
         "uploaded-files": "Uploaded files",
         "view-the-uploaded-files-here": "View the uploaded files here",
         "no-files-uploaded": "No files uploaded",
-        "upload-some-files-to-see-them-here": "Upload some files to see them here"
+        "upload-some-files-to-see-them-here": "Upload some files to see them here",
+        "select-all": "Select all",
+        "more": "More"
     },
     "title": {
         "login": "Login",
@@ -80,10 +82,14 @@
         "delete-item": "Delete item",
         "create-item": "Create item",
         "are-you-sure": "Are you absolutely sure?",
-        "continue": "Continue"
+        "continue": "Continue",
+        "close": "Close",
+        "clear": "Clear",
+        "save": "Save"
     },
     "label": {
-        "enter-email": "Enter your email below to login to your account"
+        "enter-email": "Enter your email below to login to your account",
+        "select-category": "Select a category"
     },
     "message": {
         "create-success": "Create successfully",

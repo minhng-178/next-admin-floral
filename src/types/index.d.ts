@@ -19,3 +19,7 @@ declare module "locale" {
 declare module "upload" {
   export * from "@/types/upload";
 }
+
+declare module "function" {
+  export * from "@/types/function";
+}

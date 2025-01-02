@@ -9,3 +9,7 @@ declare module "payment-models" {
 declare module "upload-models" {
   export * from "@/models/upload";
 }
+
+declare module "flower-models" {
+  export * from "@/models/flower";
+}

@@ -5,20 +5,38 @@ import { CloudinaryResponse } from "upload";
 
 export default class UploadService {
   async uploadSingleFile(
-    file: any,
+    file: File,
     onUploadProgress: (progressEvent: AxiosProgressEvent) => void
   ): Promise<CloudinaryResponse> {
-    return await http.post(uploadPath.SINGLE, file, {
-      onUploadProgress,
-    });
+    const formData = new FormData();
+    formData.append("file", file);
+
+    return (
+      await http.post(uploadPath.SINGLE, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress,
+      })
+    ).data;
   }
 
   async uploadMultipleFiles(
-    files: any,
+    files: File[],
     onUploadProgress: (progressEvent: AxiosProgressEvent) => void
   ): Promise<CloudinaryResponse[]> {
-    return await http.post(uploadPath.MULTIPLE, files, {
-      onUploadProgress,
+    const formData = new FormData();
+    files.forEach((file) => {
+      formData.append("files", file);
     });
+
+    return (
+      await http.post(uploadPath.MULTIPLE, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress,
+      })
+    ).data;
   }
 }
